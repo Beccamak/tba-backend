@@ -15,7 +15,11 @@ export const register = async(req, res) => {
     const user = await User.create({firstName, lastName, email, password});
     const tokenUser = createTokenUser(user);
     attachCookiesToResponse({res, user: tokenUser})
-    res.status(StatusCodes.CREATED).json({user:tokenUser})
+    res.status(StatusCodes.CREATED).json({
+        message: 'Registration Sucessful',
+        data: tokenUser,
+        user:tokenUser
+    })
 
 
 }
