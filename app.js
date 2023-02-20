@@ -14,10 +14,14 @@ import cors from 'cors';
 // #757EB0 #71307A #B81F7B
 
 const app = express();
-dotenv.config();
-app.use(cors());
-
 app.use(express.json());
+app.use(cors(
+    {
+        origin: "http://localhost:3000"
+    }
+));
+dotenv.config();
+
 app.use(cookieParser((process.env.JWT_SECRET)))
 const PORT = process.env.PORT || 5000;
 
