@@ -26,15 +26,16 @@ export const register = async(req, res) => {
 export const login = async (req, res) => {
     const {email, password} = req.body;
     if(!email || !password){
-        res.send("PLease provide email and password")
+        return res.send("PLease provide email and password")
     };
     const user = await User.findOne({email})
     if(!user){
-        res.send("Invalid credentials");
+       return res.send("Invalid credentials");
     }
+    console.log("password", user);
     const isPasswordCorrect = await user.comparePassword(password);
     if(!isPasswordCorrect){
-        res.send("Please input the correct password");
+        return res.send("Please input the correct password");
     }
     const tokenUser = createTokenUser(user);
     attachCookiesToResponse({res, user: tokenUser});
