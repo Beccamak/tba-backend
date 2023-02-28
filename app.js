@@ -16,7 +16,7 @@ import cors from 'cors';
 const app = express();
 app.use(express.json());
 dotenv.config();
-
+console.log(process.env.NODE_ENV);
 const url = process.env.NODE_ENV==='development' ? 'http://localhost:3000' : 'https://stellar-basbousa-e316b4.netlify.app';
 app.use(cors(
     {
