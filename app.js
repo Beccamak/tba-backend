@@ -15,18 +15,20 @@ import cors from 'cors';
 
 const app = express();
 app.use(express.json());
+dotenv.config();
+
+const url = process.env.NODE_ENV==='development' ? 'http://localhost:3000' : 'https://stellar-basbousa-e316b4.netlify.app';
 app.use(cors(
     {
-        // origin: "http://localhost:3000https://total-beauty-affairs-backend.onrender.com/ "
-        origin: "https://stellar-basbousa-e316b4.netlify.app/"
+          origin: url
     }
 ));
-dotenv.config();
+
 
 app.use(cookieParser((process.env.JWT_SECRET)))
 const PORT = process.env.PORT || 5000;
 
-const url = `localhost:${PORT}`;
+
 // Setting up the routes for use
 
 app.use(`/auth`, authRouter);
