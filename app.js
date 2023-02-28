@@ -17,7 +17,7 @@ const app = express();
 app.use(express.json());
 app.use(cors(
     {
-        // origin: "http://localhost:3000"
+        // origin: "http://localhost:3000https://total-beauty-affairs-backend.onrender.com/ "
         origin: "https://stellar-basbousa-e316b4.netlify.app/"
     }
 ));
